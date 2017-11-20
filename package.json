@@ -1,12 +1,16 @@
 {
   "name": "ackee-api-agent",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run build"
+  },
   "author": "Lukáš Horák <lukas.horak@ackee.cz>",
   "contributors": [
-      "Jiří Smolík <jiri.smolik@ackee.cz>",
-      "Jakub Baierl <jakub.baierl@ackee.cz>",
-      "Marek Janča <marek.janca@ackee.cz>"
+    "Jiří Smolík <jiri.smolik@ackee.cz>",
+    "Jakub Baierl <jakub.baierl@ackee.cz>",
+    "Marek Janča <marek.janca@ackee.cz>"
   ],
   "license": "MIT",
   "dependencies": {
@@ -14,11 +18,21 @@
     "url-assembler": "^1.2.9"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.11.0",
     "eslint-config-ackee": "^0.7.0"
   },
   "repository": {
-      "type" : "git",
-      "url" : "https://gitlab.ack.ee/Web/api-agent"
+    "type": "git",
+    "url": "https://gitlab.ack.ee/Web/api-agent"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "babel-preset-stage-0"
+    ]
   }
 }
