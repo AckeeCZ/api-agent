@@ -1,0 +1,24 @@
+{
+  "name": "ackee-api-agent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Lukáš Horák <lukas.horak@ackee.cz>",
+  "contributors": [
+      "Jiří Smolík <jiri.smolik@ackee.cz>",
+      "Jakub Baierl <jakub.baierl@ackee.cz>",
+      "Marek Janča <marek.janca@ackee.cz>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "url-assembler": "^1.2.9"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-ackee": "^0.7.0"
+  },
+  "repository": {
+      "type" : "git",
+      "url" : "https://gitlab.ack.ee/Web/api-agent"
+  }
+}
