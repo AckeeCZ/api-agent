@@ -35,19 +35,19 @@ api.post('/groups', { name: 'new group', description: 'New testing group' })
 
 Class that has following instance methods.
 
-#### `constructor(basePath: string)`
+* **`constructor(basePath: string)`**
 
-#### `request(path: string, params: IParams): Promise<IResponse|IResponseBody>`
+* **`request(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
 
-#### `get(path: string, params: IParams): Promise<IResponse|IResponseBody>`
+* **`get(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
 
-#### `post(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`
+* **`post(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-#### `put(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`
+* **`put(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-#### `patch(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`
+* **`patch(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-#### `delete(path: string, options: IOptions): Promise<IResponse|IResponseBody>`
+* **`delete(path: string, options: IOptions): Promise<IResponse|IResponseBody>`**
 
 ### `IData: Object`
 Key-value object containing any data you want to send to server.
@@ -56,35 +56,29 @@ Key-value object containing any data you want to send to server.
 
 Object optionally containing following properties.
 
-#### `uriParams: Object`
-
+* **`uriParams: Object`**
 Ke-value object containing request uri params.
 
-#### `qs: Object`
-
+* **`qs: Object`**
 Ke-value object containing request query string params.
 
-#### `json: boolean`
-
+* **`json: boolean`**
 Determine when optionally provided `IData` is in JSON format. Default is `true`
 
-#### `headers: Object`
-
+* **`headers: Object`**
 Request HTTP headers.
 
-#### `resolveWithFullResponse: boolean`
-
+* **`resolveWithFullResponse: boolean`**
 Determine if request should resolve with full response or just a response body. Default is `false`.
 
 ### `IParams: Object`
 
 All the `IOptions` contains and following properties.
 
-#### `method: string`
+* **`method: string`**
  Http method name.
 
-#### `body: IData`
-
+* **`body: IData`**
 Optional.
 
 ### `IResponse|IResponseBody`
@@ -92,14 +86,13 @@ Optional.
 Type of response is determined by `resolveWithFullResponse` request property. It's either
 just response data in JSON format, or full response containing following properties.
 
-#### `status: number`
+* **`status: number`**
 
-#### `statusText: string`
+* **`statusText: string`**
 
-#### `url: string`
+* **`url: string`**
 
-#### `headers: Object`
-
+* **`headers: Object`**
 Key-value object containing response headers.
 
-#### `ok: boolean`
+* **`ok: boolean`**
