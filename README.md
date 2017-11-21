@@ -18,13 +18,13 @@ const params = {
 
 
 // get data
-api.get('/drivers', driversFilter, params);
-    .then(drivers => )
-
 api.get('/metadata')
     .then(metadata => console.log(metadata));
 
 // set data
+api.post('/drivers', driversFilter, params);
+    .then(drivers => console.log(drivers))
+
 api.post('/groups', { name: 'new group', description: 'New testing group' })
     .catch(err => console.log('Group was not created'));
 ```
