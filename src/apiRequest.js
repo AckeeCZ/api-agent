@@ -64,7 +64,12 @@ export default function(params = {}) {
     }
 
     if (json) {
-        if (!_.isEmpty(body)) {
+        if (_.isEmpty(body)) {
+            // unset body if it's not a valid json,
+            // it's neccesary especially for IE browsers which empty object literal convert
+            // to [Object object] string instead of serializing it
+            reqOptions.body = undefined;
+        } else {
             reqOptions.body = JSON.stringify(body);
         }
     } else {
