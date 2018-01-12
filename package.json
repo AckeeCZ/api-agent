@@ -2,8 +2,11 @@
   "name": "ackee-api-agent",
   "version": "1.0.2",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "npm run build:lib && npm run build:es",
+    "build:lib": "cross-env BABEL_ENV=lib babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "prepublish": "npm run build"
   },
   "author": "Lukáš Horák <lukas.horak@ackee.cz>",
@@ -22,6 +25,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.3",
     "eslint": "^4.11.0",
     "eslint-config-ackee": "^0.7.0"
   },

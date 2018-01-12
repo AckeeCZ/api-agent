@@ -1,0 +1,16 @@
+{
+    "env": {
+        "lib": {
+            "presets": [
+                "es2015",
+                "babel-preset-stage-0"
+            ]
+        },
+        "es": {
+            "presets": [
+                ["es2015", { "modules": false }],
+                "babel-preset-stage-0"
+            ]
+        }
+    }
+}
