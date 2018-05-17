@@ -41,6 +41,7 @@ export default function(params = {}) {
     const qs = _.get(reqOptions, 'qs', {});
 
     const json = _.get(reqOptions, 'json', true);
+    const blob = _.get(reqOptions, 'blob', false);
     const body = _.get(reqOptions, 'body', {});
 
     const uri = urlAssembler(base)
@@ -80,7 +81,7 @@ export default function(params = {}) {
         .then(
             response => Promise.all([
                 extractResponseData(response),
-                response.text(),
+                blob ? response.blob() : response.text(),
             ]),
         )
         .then(
@@ -89,7 +90,7 @@ export default function(params = {}) {
                 body: promised[1],
             }),
         )
-        .then(handleJson)
+        .then(blob ? _.identity : handleJson)
         .then(handleStatusCodeError)
         .then((x) => {
             if (reqOptions.resolveWithFullResponse) {
