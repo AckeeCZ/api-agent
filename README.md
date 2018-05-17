@@ -71,6 +71,22 @@ Request HTTP headers.
 * **`resolveWithFullResponse: boolean`**
 Determine if request should resolve with full response or just a response body. Default is `false`.
 
+* **`blob: boolean`**
+Determine if response should be treated as a binary data. Default is `false`.
+
+    ```js
+    const authApi = new AuthApiAgent(config.api.base);
+
+    authApi
+        .get('/download/pdf', { blob: true })
+        .then(pdf => {
+            // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
+
+            const uri = URL.createObjectURL(pdf);
+            // uri === 'blob:http://my-app-url/fb0b4600-8377-4357-a240-8346e94a0384'
+        });
+    ```
+
 ### `IParams: Object`
 
 All the `IOptions` contains and following properties.
