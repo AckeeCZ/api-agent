@@ -138,6 +138,27 @@ Optional.
 Type of response is determined by `resolveWithFullResponse` request property. It's either
 just response data in JSON format, or full response containing following properties.
 
+    ```js
+    const authApi = new AuthApiAgent(config.api.base);
+
+    authApi.get('/users')
+        .then(users => {
+            console.log(JSON.stringify(users));
+            // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+        });
+
+    authApi.get('/users', { resolveWithFullResponse: true })
+        .then(response => {
+            console.log(JSON.stringify(response.body));
+            // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+
+            response.status === 200 // true
+            result.headers.get('x-total-count') === '3' // true
+        });
+    ```
+
+* **`body: IResponseBody`**
+
 * **`status: number`**
 
 * **`statusText: string`**
