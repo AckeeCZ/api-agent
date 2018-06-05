@@ -50,7 +50,7 @@ Class that has following instance methods.
 * **`delete(path: string, options: IOptions): Promise<IResponse|IResponseBody>`**
 
 ### `IData: Object`
-Key-value object containing any data you want to send to server.
+Key-value object containing any data you want to send to server in request body.
 
 ### `IOptions: Object`
 
@@ -98,7 +98,8 @@ Ke-value object containing request query string params. Add query params to url
     ```
 
 * **`json: boolean`**
-Determine when optionally provided `IData` is in JSON format. Default is `true`
+Determine when optionally provided `IData` is in JSON format and should be serialized to string.
+Alos set request header `ContentType=application/json`. Default is `true`.
 
 * **`headers: Object`**
 Request HTTP headers.
