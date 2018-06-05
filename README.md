@@ -57,10 +57,45 @@ Key-value object containing any data you want to send to server.
 Object optionally containing following properties.
 
 * **`uriParams: Object`**
-Ke-value object containing request uri params.
+Key-value object containing request uri params. Params that are found in url are replaced,
+rest is appended as a query parameters.
+
+    ```js
+    const config = {
+        api: {
+            base: 'http://api-domain',
+            user: '/users/:user',
+        }
+    }
+    const authApi = new AuthApiAgent(config.api.base);
+    const uriParams = {
+        user: 13,
+        include: 'address',
+    };
+
+    authApi.get(config.api.user, { uriParams });
+    // requested url is 'http://api-domain/users/13?include=address
+    ```
 
 * **`qs: Object`**
-Ke-value object containing request query string params.
+Ke-value object containing request query string params. Add query params to url
+
+    ```js
+    const config = {
+        api: {
+            base: 'http://api-domain',
+            users: '/users',
+        }
+    }
+    const authApi = new AuthApiAgent(config.api.base);
+    const qs = {
+        page: 3,
+        offset: 20,
+    };
+
+    authApi.get(config.api.users, { qs });
+    // requested url is 'http://api-domain/users?page=3&offset=20
+    ```
 
 * **`json: boolean`**
 Determine when optionally provided `IData` is in JSON format. Default is `true`
