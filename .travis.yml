@@ -1,0 +1,5 @@
+deploy:
+  provider: npm
+  email: "jakub.baierl@ackee.cz"
+  api_key: "19183fa4-c19f-4383-a235-6fffb90f3576"
+  tag: next
