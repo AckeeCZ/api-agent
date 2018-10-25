@@ -1,5 +1,4 @@
 ![ackee|ApiAgent](https://img.ack.ee/ackee/image/github/js)
-
 # [ApiAgent](https://reactjs.org/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AckeeCZ/api-agent/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/ackee-api-agent.svg?style=flat)](https://www.npmjs.com/package/ackee-api-agent) [![CI Status](http://img.shields.io/travis/AckeeCZ/api-agent.svg?style=flat)](https://travis-ci.org/AckeeCZ/api-agent) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
 
 ## Quick start
