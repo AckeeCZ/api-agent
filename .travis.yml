@@ -11,3 +11,4 @@ deploy:
     tags: true
     repo: ackee-api-agent
     branch: master
+branches: master
