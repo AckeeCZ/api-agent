@@ -1,5 +1,10 @@
+language: node_js
+script: npm run build
 deploy:
   provider: npm
-  email: "ackeedevelopment@gmail.com"
-  api_key: "6c93cbf9-dc21-4cb3-bfc8-2433781330d3"
-  tag: next
+  email: ackeedevelopment@ackee.cz
+  api_key:
+    secure: Mdteri5Ddm7I6C9k0i3zLwiJyHz3lMgfntecMgfOSKYUBrsaLOmrF1g+Qb80nnzmjxyAiJrIq2XGghJ3NfQ15LpPvJjE/n0awlaeMjBYLFagzPWi0RtmxclulgIeKihDhf0hfYvMQAvrSEqSsrBIIxJ/V3dzt4a8CszC/TYsKi8HraUQ7vHbR1X54X1G+TldM2n3wJLOQ1eq3lU9l64t+LVIVML6YllI/xvMG4WocOtg1KriQ58YLCivOUhukHrjvR4Z3psP34TvF9T8I5BfcPqOgopfu+6vJ4FYiEoqeD9wrMuWJx1XKRAVih53Y92fxV+vjP6bzUl+ztEFzP5UrjjJhkLmaM2388BfiMhKuZOrEvSzdysGGdEjan3KWkGRZWcaNK3gsif5+HIBok8nJjvGEpjWZU09WhJNKuibO6E5SwxtXErUZXJa3MH6aH27LH2Tyo7M2bejHowC5A3fbD9g6hS2njNxl7QSr9+u5Q86nPhqIuWQ9ZgndSF6tFdwr2dYXnZnVo4cH4hWFPIH94zasktHhl7rjfXnh4AMI0WQ7xI0/ozacC5swgHZPYa7ozPN6qZxmjcWRLdI2mtTG3YLtfr851nqBu5xY0TBO+KpSQUyrjNsyP1NWusaqv2fJcEjnPHHENfwOYV3sMpzNfpy/lw0RuSjNbig0tplIrw=
+  on:
+    tags: true
+    repo: AckeeCZ/api-agent
