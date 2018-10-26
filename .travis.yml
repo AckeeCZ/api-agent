@@ -1,5 +1,8 @@
 language: node_js
-script: npm run build
+node_js:
+  - "iojs"
+  - "8"
+script: npm run prepublish
 deploy:
   provider: npm
   email: ackeedevelopment@ackee.cz
