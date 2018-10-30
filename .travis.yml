@@ -13,4 +13,3 @@ deploy:
   on:
     tags: true
     repo: AckeeCZ/api-agent
-    branch: master
