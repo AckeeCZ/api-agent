@@ -65,42 +65,42 @@ Object optionally containing following properties.
 Key-value object containing request uri params. Params that are found in url are replaced,
 rest is appended as a query parameters.
 
-    ```js
-    const config = {
-        api: {
-            base: 'http://api-domain',
-            user: '/users/:user',
-        }
+```js
+const config = {
+    api: {
+        base: 'http://api-domain',
+        user: '/users/:user',
     }
-    const authApi = new AuthApiAgent(config.api.base);
-    const uriParams = {
-        user: 13,
-        include: 'address',
-    };
+}
+const authApi = new AuthApiAgent(config.api.base);
+const uriParams = {
+    user: 13,
+    include: 'address',
+};
 
-    authApi.get(config.api.user, { uriParams });
-    // requested url is 'http://api-domain/users/13?include=address
-    ```
+authApi.get(config.api.user, { uriParams });
+// requested url is 'http://api-domain/users/13?include=address
+```
 
 * **`qs: Object`**
 Ke-value object containing request query string params. Add query params to url
 
-    ```js
-    const config = {
-        api: {
-            base: 'http://api-domain',
-            users: '/users',
-        }
+```js
+const config = {
+    api: {
+        base: 'http://api-domain',
+        users: '/users',
     }
-    const authApi = new AuthApiAgent(config.api.base);
-    const qs = {
-        page: 3,
-        offset: 20,
-    };
+}
+const authApi = new AuthApiAgent(config.api.base);
+const qs = {
+    page: 3,
+    offset: 20,
+};
 
-    authApi.get(config.api.users, { qs });
-    // requested url is 'http://api-domain/users?page=3&offset=20
-    ```
+authApi.get(config.api.users, { qs });
+// requested url is 'http://api-domain/users?page=3&offset=20
+```
 
 * **`json: boolean`**
 Determine when optionally provided `IData` is in JSON format and should be serialized to string.
@@ -115,18 +115,18 @@ Determine if request should resolve with full response or just a response body. 
 * **`blob: boolean`**
 Determine if response should be treated as a binary data. Default is `false`.
 
-    ```js
-    const authApi = new AuthApiAgent(config.api.base);
+```js
+const authApi = new AuthApiAgent(config.api.base);
 
-    authApi
-        .get('/download/pdf', { blob: true })
-        .then(pdf => {
-            // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
+authApi
+    .get('/download/pdf', { blob: true })
+    .then(pdf => {
+        // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
 
-            const uri = URL.createObjectURL(pdf);
-            // uri === 'blob:http://my-app-url/fb0b4600-8377-4357-a240-8346e94a0384'
-        });
-    ```
+        const uri = URL.createObjectURL(pdf);
+        // uri === 'blob:http://my-app-url/fb0b4600-8377-4357-a240-8346e94a0384'
+    });
+```
 
 ### `IParams: Object`
 
@@ -143,24 +143,24 @@ Optional.
 Type of response is determined by `resolveWithFullResponse` request property. It's either
 just response data in JSON format, or full response containing following properties.
 
-    ```js
-    const authApi = new AuthApiAgent(config.api.base);
+```js
+const authApi = new AuthApiAgent(config.api.base);
 
-    authApi.get('/users')
-        .then(users => {
-            console.log(JSON.stringify(users));
-            // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
-        });
+authApi.get('/users')
+    .then(users => {
+        console.log(JSON.stringify(users));
+        // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+    });
 
-    authApi.get('/users', { resolveWithFullResponse: true })
-        .then(response => {
-            console.log(JSON.stringify(response.body));
-            // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+authApi.get('/users', { resolveWithFullResponse: true })
+    .then(response => {
+        console.log(JSON.stringify(response.body));
+        // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
 
-            response.status === 200 // true
-            result.headers.get('x-total-count') === '3' // true
-        });
-    ```
+        response.status === 200 // true
+        result.headers.get('x-total-count') === '3' // true
+    });
+```
 
 * **`body: IResponseBody`**
 
