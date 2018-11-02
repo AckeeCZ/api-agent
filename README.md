@@ -68,13 +68,13 @@ const config = {
         user: '/users/:user',
     }
 }
-const authApi = new AuthApiAgent(config.api.base);
+const api = new ApiAgent(config.api.base);
 const uriParams = {
     user: 13,
     include: 'address',
 };
 
-authApi.get(config.api.user, { uriParams });
+api.get(config.api.user, { uriParams });
 // requested url is 'http://api-domain/users/13?include=address
 ```
 
@@ -88,13 +88,13 @@ const config = {
         users: '/users',
     }
 }
-const authApi = new AuthApiAgent(config.api.base);
+const api = new ApiAgent(config.api.base);
 const qs = {
     page: 3,
     offset: 20,
 };
 
-authApi.get(config.api.users, { qs });
+api.get(config.api.users, { qs });
 // requested url is 'http://api-domain/users?page=3&offset=20
 ```
 
@@ -112,9 +112,9 @@ Determine if request should resolve with full response or just a response body. 
 Determine if response should be treated as a binary data. Default is `false`.
 
 ```js
-const authApi = new AuthApiAgent(config.api.base);
+const api = new ApiAgent(config.api.base);
 
-authApi
+api
     .get('/download/pdf', { blob: true })
     .then(pdf => {
         // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
@@ -140,15 +140,15 @@ Type of response is determined by `resolveWithFullResponse` request property. It
 just response data in JSON format, or full response containing following properties.
 
 ```js
-const authApi = new AuthApiAgent(config.api.base);
+const api = new ApiAgent(config.api.base);
 
-authApi.get('/users')
+api.get('/users')
     .then(users => {
         console.log(JSON.stringify(users));
         // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
     });
 
-authApi.get('/users', { resolveWithFullResponse: true })
+api.get('/users', { resolveWithFullResponse: true })
     .then(response => {
         console.log(JSON.stringify(response.body));
         // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
