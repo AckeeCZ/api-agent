@@ -56,7 +56,7 @@ export default function(params = {}) {
         mode: 'cors',
     });
 
-    if (json) {
+    if (json && !_.get(reqOptions.headers, 'Content-Type')) {
         _.set(reqOptions, 'headers.Content-Type', 'application/json');
     }
 
