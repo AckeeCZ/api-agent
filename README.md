@@ -1,4 +1,4 @@
-> Renamed (and reimplemented) to @ackee/antonio
+> Renamed (and reimplemented) to [@ackee/antonio](https://github.com/AckeeCZ/antonio)
 
 ![](https://camo.githubusercontent.com/30a50b0142b709751620b6a52935bb8b31b8119830301b330f873b988945cc86/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313030302f312a70676b7a6e72752d3833396c3654746d397a617671512e706e67)
 
