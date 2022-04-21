@@ -1,4 +1,7 @@
-![ackee|ApiAgent](https://img.ack.ee/ackee/image/github/js)
+> Renamed (and reimplemented) to @ackee/antonio
+
+![](https://camo.githubusercontent.com/30a50b0142b709751620b6a52935bb8b31b8119830301b330f873b988945cc86/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313030302f312a70676b7a6e72752d3833396c3654746d397a617671512e706e67)
+
 # [ApiAgent](https://www.npmjs.com/package/ackee-api-agent) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AckeeCZ/api-agent/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/ackee-api-agent.svg?style=flat)](https://www.npmjs.com/package/ackee-api-agent) [![CI Status](http://img.shields.io/travis/AckeeCZ/api-agent.svg?style=flat)](https://travis-ci.org/AckeeCZ/api-agent) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
 
 ## Quick start
@@ -36,59 +39,60 @@ api.post('/groups', { name: 'new group', description: 'New testing group' })
 
 Class that has following instance methods.
 
-* **`constructor(basePath: string)`**
+-   **`constructor(basePath: string)`**
 
-* **`request(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
+-   **`request(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
 
-* **`get(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
+-   **`get(path: string, params: IParams): Promise<IResponse|IResponseBody>`**
 
-* **`post(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
+-   **`post(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-* **`put(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
+-   **`put(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-* **`patch(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
+-   **`patch(path: string, data: IData, options: IOptions): Promise<IResponse|IResponseBody>`**
 
-* **`delete(path: string, options: IOptions): Promise<IResponse|IResponseBody>`**
+-   **`delete(path: string, options: IOptions): Promise<IResponse|IResponseBody>`**
 
 ### `IData: Object`
+
 Key-value object containing any data you want to send to server in request body.
 
 ### `IOptions: Object`
 
 Object optionally containing following properties.
 
-* **`uriParams: Object`**
-Key-value object containing request uri params. Params that are found in url are replaced,
-rest is appended as a query parameters.
+-   **`uriParams: Object`**
+    Key-value object containing request uri params. Params that are found in url are replaced,
+    rest is appended as a query parameters.
 
 ```js
 const config = {
     api: {
-        base: 'http://api-domain',
-        user: '/users/:user',
-    }
-}
+        base: "http://api-domain",
+        user: "/users/:user",
+    },
+};
 
 const api = new ApiAgent(config.api.base);
 const uriParams = {
     user: 13,
-    include: 'address',
+    include: "address",
 };
 
 api.get(config.api.user, { uriParams });
 // requested url is 'http://api-domain/users/13?include=address
 ```
 
-* **`qs: Object`**
-Ke-value object containing request query string params. Add query params to url
+-   **`qs: Object`**
+    Ke-value object containing request query string params. Add query params to url
 
 ```js
 const config = {
     api: {
-        base: 'http://api-domain',
-        users: '/users',
-    }
-}
+        base: "http://api-domain",
+        users: "/users",
+    },
+};
 
 const api = new ApiAgent(config.api.base);
 const qs = {
@@ -100,41 +104,39 @@ api.get(config.api.users, { qs });
 // requested url is 'http://api-domain/users?page=3&offset=20
 ```
 
-* **`json: boolean`**
-Determine when optionally provided `IData` is in JSON format and should be serialized to string.
-Alos set request header `ContentType=application/json`. Default is `true`.
+-   **`json: boolean`**
+    Determine when optionally provided `IData` is in JSON format and should be serialized to string.
+    Alos set request header `ContentType=application/json`. Default is `true`.
 
-* **`headers: Object`**
-Request HTTP headers.
+-   **`headers: Object`**
+    Request HTTP headers.
 
-* **`resolveWithFullResponse: boolean`**
-Determine if request should resolve with full response or just a response body. Default is `false`.
+-   **`resolveWithFullResponse: boolean`**
+    Determine if request should resolve with full response or just a response body. Default is `false`.
 
-* **`blob: boolean`**
-Determine if response should be treated as a binary data. Default is `false`.
+-   **`blob: boolean`**
+    Determine if response should be treated as a binary data. Default is `false`.
 
 ```js
 const api = new ApiAgent(config.api.base);
 
-api
-    .get('/download/pdf', { blob: true })
-    .then(pdf => {
-        // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
+api.get("/download/pdf", { blob: true }).then((pdf) => {
+    // pdf === Blob(205990) {size: 205990, type: "application/octet-stream"}
 
-        const uri = URL.createObjectURL(pdf);
-        // uri === 'blob:http://my-app-url/fb0b4600-8377-4357-a240-8346e94a0384'
-    });
+    const uri = URL.createObjectURL(pdf);
+    // uri === 'blob:http://my-app-url/fb0b4600-8377-4357-a240-8346e94a0384'
+});
 ```
 
 ### `IParams: Object`
 
 All the `IOptions` contains and following properties.
 
-* **`method: string`**
- Http method name.
+-   **`method: string`**
+    Http method name.
 
-* **`body: IData`**
-Optional.
+-   **`body: IData`**
+    Optional.
 
 ### `IResponse|IResponseBody`
 
@@ -144,31 +146,29 @@ just response data in JSON format, or full response containing following propert
 ```js
 const api = new ApiAgent(config.api.base);
 
-api.get('/users')
-    .then(users => {
-        console.log(JSON.stringify(users));
-        // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
-    });
+api.get("/users").then((users) => {
+    console.log(JSON.stringify(users));
+    // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+});
 
-api.get('/users', { resolveWithFullResponse: true })
-    .then(response => {
-        console.log(JSON.stringify(response.body));
-        // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
+api.get("/users", { resolveWithFullResponse: true }).then((response) => {
+    console.log(JSON.stringify(response.body));
+    // [{"id":1,"name":"Me"},{"id":2,"name":"You"},{"id":3,"name":"He"}]
 
-        response.status === 200 // true
-        result.headers.get('x-total-count') === '3' // true
-    });
+    response.status === 200; // true
+    result.headers.get("x-total-count") === "3"; // true
+});
 ```
 
-* **`body: IResponseBody`**
+-   **`body: IResponseBody`**
 
-* **`status: number`**
+-   **`status: number`**
 
-* **`statusText: string`**
+-   **`statusText: string`**
 
-* **`url: string`**
+-   **`url: string`**
 
-* **`headers: Object`**
-Key-value object containing response headers.
+-   **`headers: Object`**
+    Key-value object containing response headers.
 
-* **`ok: boolean`**
+-   **`ok: boolean`**
